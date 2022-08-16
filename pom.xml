@@ -30,9 +30,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>dev.vality</groupId>
-            <artifactId>damsel</artifactId>
-            <version>1.544-dcd92dd</version>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
         </dependency>
     </dependencies>
 
@@ -62,7 +62,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -72,8 +72,8 @@
                         <configuration>
                             <relocations>
                                 <relocation>
-                                    <pattern>dev.vality.damsel</pattern>
-                                    <shadedPattern>dev.vality.damsel.v${commit.number}</shadedPattern>
+                                    <pattern>dev.vality</pattern>
+                                    <shadedPattern>dev.vality.v${commit.number}</shadedPattern>
                                 </relocation>
                             </relocations>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
