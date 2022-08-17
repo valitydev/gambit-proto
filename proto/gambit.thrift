@@ -25,7 +25,7 @@ exception DataSetNotFound {}
 /**
 * Интерфейс для получения данных
 */
-service GambitService {
+service StubDataService {
 
     /**
      * Получение данных из соответствующего источника
