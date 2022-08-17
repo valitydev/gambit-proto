@@ -4,11 +4,6 @@ namespace erlang gambit
 typedef i32 Hash
 
 struct DataRequest {
-    1: required string dataset_name
-    2: required Hash hash
-}
-
-struct MultipleDataRequest {
     1: required list<string> datasets_names
     2: required Hash hash
 }
@@ -25,13 +20,8 @@ exception DataSetNotFound {}
 service StubDataService {
 
     /**
-     * Получение данных из соответствующего источника
-     */
-    DataResponse GetData (1: DataRequest data_request) throws (1: DataSetNotFound ex);
-
-    /**
      * Получение данных из нескольких источников
      */
-    DataResponse GetData (1: MultipleDataRequest multiple_data_request) throws (1: DataSetNotFound ex);
+    DataResponse GetData (1: DataRequest data_request) throws (1: DataSetNotFound ex);
 
 }
