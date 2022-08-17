@@ -8,16 +8,13 @@ struct DataRequest {
     2: required Hash hash
 }
 
-struct IpRequest {
-    1: required Hash hash
+struct MultipleDataRequest {
+    1: required list<string> datasets_names
+    2: required Hash hash
 }
 
 struct DataResponse {
     1: required map<string, string> data
-}
-
-struct IpResponse {
-    1: required string ip
 }
 
 exception DataSetNotFound {}
@@ -33,8 +30,8 @@ service StubDataService {
     DataResponse GetData (1: DataRequest data_request) throws (1: DataSetNotFound ex);
 
     /**
-     * Получение ip адреса
+     * Получение данных из нескольких источников
      */
-    IpResponse GetIp (1: IpRequest ip_request) throws (1: DataSetNotFound ex);
+    DataResponse GetData (1: MultipleDataRequest multiple_data_request) throws (1: DataSetNotFound ex);
 
 }
