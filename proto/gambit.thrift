@@ -1,11 +1,12 @@
 namespace java dev.vality.gambit
 namespace erlang gambit
 
+// Алгоритм хеширования вы выбираете сами, мы рекомендуем murmur3 из-за легковесности.
 typedef i32 Hash
 
 struct DataRequest {
-    1: required list<string> datasets_names
-    2: required Hash hash
+    1: required set<string> data_sets_names
+    2: required Hash lookup_key
 }
 
 struct DataResponse {
