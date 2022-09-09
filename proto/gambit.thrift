@@ -24,7 +24,7 @@ exception DataSetNotFound {}
 exception DataSetAlreadyExists {}
 
 /**
-* Интерфейс для получения данных
+* Интерфейс для работы с данными
 */
 service StubDataService {
 
