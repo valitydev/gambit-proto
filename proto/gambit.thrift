@@ -15,8 +15,11 @@ struct DataResponse {
 
 struct DataSetRequest {
     1: required string data_set_name
-    // На текущий момент обрабатываются только CSV файлы
-    2: required binary file
+    2: required File file
+}
+
+union File {
+    1: binary csv
 }
 
 exception DataSetNotFound {}
