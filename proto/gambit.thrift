@@ -1,12 +1,18 @@
 namespace java dev.vality.gambit
 namespace erlang gambit
 
-// Алгоритм хеширования вы выбираете сами, мы рекомендуем murmur3 из-за легковесности.
+/** Алгоритм хеширования вы выбираете сами, мы рекомендуем murmur3 из-за легковесности. */
 typedef i32 Hash
+/** Имя источника набора данных. */
+typedef string DataSetName
 
 struct DataRequest {
     1: required set<string> data_sets_names
     2: required Hash lookup_key
+}
+
+struct DataRowRequest {
+    1: required DataSetName data_set_name
 }
 
 struct DataResponse {
@@ -35,6 +41,11 @@ service StubDataService {
      * Получение данных из нескольких источников
      */
     DataResponse GetData (1: DataRequest data_request) throws (1: DataSetNotFound ex);
+
+    /**
+     * Получение случайной записи из одного источника
+     */
+    DataResponse GetRandomDataRow (1: DataRowRequest data_row_request) throws (1: DataSetNotFound ex);
 
     /**
      * Создание набора данных
