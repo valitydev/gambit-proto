@@ -5,6 +5,8 @@ namespace erlang gambit
 typedef i32 Hash
 /** Имя источника набора данных. */
 typedef string DataSetName
+/** Идентификатор для привязки записи. */
+typedef string BindId
 
 struct DataRequest {
     1: required set<string> data_sets_names
@@ -13,6 +15,11 @@ struct DataRequest {
 
 struct DataRowRequest {
     1: required DataSetName data_set_name
+}
+
+struct BindingDataRowRequest {
+    1: required DataSetName data_set_name
+    2: required BindId bind_id
 }
 
 struct DataResponse {
@@ -46,6 +53,11 @@ service StubDataService {
      * Получение случайной записи из одного источника
      */
     DataResponse GetRandomDataRow (1: DataRowRequest data_row_request) throws (1: DataSetNotFound ex);
+
+    /**
+     * Получение случайной записи из одного источника c привязкой к идентификатору
+     */
+    DataResponse GetBindingDataRow (1: BindingDataRowRequest binding_data_row_request) throws (1: DataSetNotFound ex);
 
     /**
      * Создание набора данных
