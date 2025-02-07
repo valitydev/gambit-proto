@@ -26,6 +26,15 @@ struct DataResponse {
     1: required map<string, string> data
 }
 
+struct DataSetResponse {
+    1: required string data_set_name
+    2: required list<DataRow> data
+}
+
+struct DataRow {
+    1: required map<string, string> row
+}
+
 struct DataSetRequest {
     1: required string data_set_name
     2: required File file
@@ -48,6 +57,11 @@ service StubDataService {
      * Получение данных из нескольких источников
      */
     DataResponse GetData (1: DataRequest data_request) throws (1: DataSetNotFound ex);
+
+    /**
+     * Получение всех данных источника
+     */
+    DataSetResponse GetFullDataSet (1: DataRowRequest data_row_request) throws (1: DataSetNotFound ex);
 
     /**
      * Получение случайной записи из одного источника
