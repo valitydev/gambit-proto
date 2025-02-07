@@ -27,8 +27,7 @@ struct DataResponse {
 }
 
 struct DataSetResponse {
-    1: required string data_set_name
-    2: required list<DataRow> data
+    1: required list<DataRow> rows
 }
 
 struct DataRow {
